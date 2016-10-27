@@ -75,23 +75,35 @@
 
     ]).then(function(resp){
 
-      console.log("HEEEELLLLP" + resp)
+      var custItem = resp.number;
+      var amount = resp.qty;
 
-      var custItem = "number";
+        connection.query ('SELECT * FROM Products WHERE ItemID =' + custItem, function(err, res, fields) {
+            if (err) {
+                throw err;
+            } else {
+                var bro = res[0].StockQuantity;
+                if (amount <= res[0].StockQuantity) {
+                    console.log("YES Messqge");
 
-        connection.query ('SELECT * FROM Products WHERE ItemID =' + custItem),
-        
-        // return resp.qty
-       
 
-        console.log(resp.number);
+                 var totalQty = bro - amount;
+        connection.query ('UPDATE Products SET StockQuantity =' + totalQty, function(err, res, fields){
 
-        // Create a number
-        var amount = "qty";
+                // if (totalQty <= res[0].StockQuantity){
+                //     console.log("Your order has been placed.");
+                // }
+                console.log(res);
 
-        connection.query ('SELECT * FROM Products WHERE StockQuantity =' + amount)
+        });
 
-        console.log("quantity on hand is: " + resp.StockQuantity );
+                } else {
+                    console.log(res);
+                    console.log("Sorry, out of stock");
+                }
+            }
+        });
+
 
     })
 
