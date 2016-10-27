@@ -1,0 +1,16 @@
+{
+  "name": "week-12-bamazon",
+  "version": "1.0.0",
+  "description": "Mimic amazon/ebay like purchasing ad db manipulation with node",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Milham",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^1.2.2",
+    "mysql": "^2.11.1",
+    "prompt": "^1.0.0"
+  }
+}
